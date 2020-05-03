@@ -18,6 +18,7 @@ const withFormDialog = (Component) => {
     title,
     formId,
     onSubmit,
+    onDelete,
     width,
     ...props
   }) => {
@@ -72,6 +73,7 @@ const withFormDialog = (Component) => {
               formId={formId || "simpleFormId"}
               changeFormWidth={setFormWidth}
               onSubmit={handleSubmit}
+              onDelete={onDelete}
               {...props}
             />
           </DialogContent>

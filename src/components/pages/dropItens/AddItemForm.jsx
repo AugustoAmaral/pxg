@@ -89,7 +89,7 @@ const OneTimeTaskForm = ({ entry, formId, onSubmit, onDelete }) => {
       }}
       validationSchema={Yup.object().shape({
         name: Yup.string().required(),
-        value: Yup.string().required(),
+        value: Yup.number().required(),
       })}
       onSubmit={(values, { setSubmitting }) => {
         onSubmit({
@@ -98,10 +98,11 @@ const OneTimeTaskForm = ({ entry, formId, onSubmit, onDelete }) => {
         });
         setSubmitting(false);
       }}
-      render={(formikProps) => (
+    >
+      {(formikProps) => (
         <Form {...formikProps} id={formId} entry={entry} onDelete={onDelete} />
       )}
-    />
+    </Formik>
   );
 };
 

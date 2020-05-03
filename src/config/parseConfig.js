@@ -1,7 +1,7 @@
 import user from "./User";
 const parseConfig = {
   appId: "3XtW5ql7KanfRSC7i4YF84834cL3LDOqqsWeWaEd",
-  appUrl: "https://parseapi.back4app.com/",
+  appUrl: "https://parseapi.back4app.com",
   restApiKey: "Mnnd7zSq0RxmSeXdkypbT6ASmJ3OKsohPJwRxPl6",
 };
 
@@ -22,7 +22,7 @@ export function defaultHeaders() {
   }
 }
 export function generateParseURL(url) {
-  return parseConfig.appUrl + url;
+  return parseConfig.appUrl+ "/" + url;
 }
 export function generateParseFunctionURL(url) {
   return parseConfig.appUrl + "/functions/" + url;

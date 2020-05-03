@@ -22,7 +22,7 @@ function ActionButton({ onClick }) {
       color="secondary"
       aria-label="Add Fab"
       className={classes.icon}
-      onClick={onClick}
+      onClick={() => onClick()}
     >
       <AddIcon />
     </Fab>
