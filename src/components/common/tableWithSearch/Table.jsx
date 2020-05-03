@@ -30,7 +30,7 @@ const CustomTable = ({ onClick, rows, columns }) => {
               <TableCell
                 key={"column" + i}
                 align={
-                  i === 0 || column.name === "materials" ? "left" : "right"
+                  i === 0 || column.name === "materials" ? "left" : "center"
                 }
               >
                 {column.label}

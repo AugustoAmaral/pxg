@@ -17,5 +17,13 @@ export default () => {
       path: "/profession",
       icon: CreateIcon,
     },
+    {
+      canList: true,
+      divider: true,
+    },
+    {
+      canList: true,
+      type: "Contato - augusto.amara@gmail.com",
+    },
   ];
 };
