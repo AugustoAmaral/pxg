@@ -8,14 +8,14 @@ export default () => {
       title: "Itens dropaveis",
       disabled: false,
       canList: true,
-      path: "/",
+      path: "/drop-itens",
       icon: DropableItem,
     },
     {
       title: "Itens de profissão",
       disabled: false,
       canList: true,
-      path: "/test",
+      path: "/",
       icon: CreateIcon,
     },
     {
