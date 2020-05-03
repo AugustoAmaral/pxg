@@ -231,7 +231,7 @@ const AddProfItemForm = ({ entry, formId, onSubmit, dropItems, ...props }) => {
       }}
       validationSchema={Yup.object().shape({
         name: Yup.string().required(),
-        value: Yup.number().required(),
+        value: Yup.number(),
         professionName: Yup.string().required(),
         professionRank: Yup.string().required(),
         materials: Yup.array().of(
