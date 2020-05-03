@@ -2,7 +2,7 @@ import React from "react";
 import withDialog from "../withDialog";
 import { Formik } from "formik";
 import { Grid, makeStyles, Button, TextField } from "@material-ui/core";
-import user from "../../config/User";
+import user from "../../../config/User";
 import * as Yup from "yup";
 
 const useStyles = makeStyles((theme) => ({

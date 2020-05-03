@@ -1,6 +1,6 @@
 import React from "react";
 import DrawerListItem from "../common/DrawerListItem";
-import navigationMenu from "../config/navigationMenu";
+import navigationMenu from "../../config/navigationMenu";
 import {
   Divider,
   ListSubheader,

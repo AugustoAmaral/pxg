@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import AccountIcon from "@material-ui/icons/AccountCircle";
 import LoginForm from "./LoginForm";
-import user from "../../config/User";
+import user from "../../../config/User";
 
 const LoginButon = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
