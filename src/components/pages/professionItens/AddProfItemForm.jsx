@@ -6,12 +6,12 @@ import {
   Divider,
   Grid,
   TextField,
-  MenuItem,
 } from "@material-ui/core";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 import withFormDialog from "../../common/withFormDialog";
 import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
+import SelectAutoComplete from "../../common/SelectAutoComplete";
 
 const styles = (theme) => ({
   formControl: {
@@ -22,6 +22,21 @@ const styles = (theme) => ({
     marginBottom: theme.spacing(1),
   },
 });
+
+const professionNames = [
+  { label: "Aventureiro", value: "Aventureiro" },
+  { label: "Engenheiro", value: "Engenheiro" },
+  { label: "Estilista", value: "Estilista" },
+  { label: "Professor", value: "Professor" },
+];
+
+const ranks = [
+  { label: "A", value: "A" },
+  { label: "B", value: "B" },
+  { label: "C", value: "C" },
+  { label: "D", value: "D" },
+  { label: "E", value: "E" },
+];
 
 const Form = withStyles(styles)(
   ({
@@ -77,67 +92,40 @@ const Form = withStyles(styles)(
         />
         <Grid container justify="space-between" spacing={1}>
           <Grid item xs>
-            <TextField
-              id="professionName"
+            <SelectAutoComplete
               name="professionName"
               label="Profissão"
-              margin="normal"
               variant="filled"
-              onChange={handleChange}
-              value={values.professionName}
               className={classes.formControl}
               helperText={errors.professionName}
               error={Boolean(errors.professionName)}
-              select
-              required
+              value={professionNames.find(
+                (e) => e.value === values.professionName
+              )}
+              setFieldValue={setFieldValue}
+              onBlur={handleBlur}
+              disabled={isSubmitting}
+              options={professionNames}
               fullWidth
-            >
-              <MenuItem id="Aventureiro" value="Aventureiro">
-                Aventureiro
-              </MenuItem>
-              <MenuItem id="Engenheiro" value="Engenheiro">
-                Engenheiro
-              </MenuItem>
-              <MenuItem id="Estilista" value="Estilista">
-                Estilista
-              </MenuItem>
-              <MenuItem id="Professor" value="Professor">
-                Professor
-              </MenuItem>
-            </TextField>
+              required
+            />
           </Grid>
           <Grid item xs>
-            <TextField
-              id="professionRank"
+            <SelectAutoComplete
               name="professionRank"
               label="Rank"
-              margin="normal"
               variant="filled"
-              onChange={handleChange}
-              value={values.professionRank}
               className={classes.formControl}
               helperText={errors.professionRank}
               error={Boolean(errors.professionRank)}
-              required
-              select
+              value={ranks.find((e) => e.value === values.professionRank)}
+              setFieldValue={setFieldValue}
+              onBlur={handleBlur}
+              disabled={isSubmitting}
+              options={ranks}
               fullWidth
-            >
-              <MenuItem id="A" value="A">
-                A
-              </MenuItem>
-              <MenuItem id="B" value="B">
-                B
-              </MenuItem>
-              <MenuItem id="C" value="C">
-                C
-              </MenuItem>
-              <MenuItem id="D" value="D">
-                D
-              </MenuItem>
-              <MenuItem id="E" value="E">
-                E
-              </MenuItem>
-            </TextField>
+              required
+            />
           </Grid>
         </Grid>
         <FieldArray
@@ -147,14 +135,10 @@ const Form = withStyles(styles)(
               <div key={k}>
                 <Grid container justify="space-between" spacing={1}>
                   <Grid item xs={8}>
-                    <TextField
-                      id={`materials[${k}].name`}
+                    <SelectAutoComplete
                       name={`materials[${k}].name`}
                       label="Nome do item"
-                      margin="normal"
                       variant="filled"
-                      onChange={handleChange}
-                      value={values.materials[k].name}
                       className={classes.formControl}
                       helperText={
                         errors.materials &&
@@ -166,19 +150,16 @@ const Form = withStyles(styles)(
                           errors.materials[k] &&
                           errors.materials[k].name
                       )}
-                      select
+                      value={dropItems.find(
+                        (e) => e.value === values.materials[k].name
+                      )}
+                      setFieldValue={setFieldValue}
+                      onBlur={handleBlur}
+                      disabled={isSubmitting}
+                      options={dropItems}
                       fullWidth
-                    >
-                      {dropItems.map(({ label, value }) => (
-                        <MenuItem
-                          id={"item" + label}
-                          key={"item" + value}
-                          value={value}
-                        >
-                          {label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
+                      required
+                    />
                   </Grid>
                   <Grid item xs={3}>
                     <TextField
@@ -186,7 +167,6 @@ const Form = withStyles(styles)(
                       label="Quantidade"
                       className={classes.formControl}
                       variant="filled"
-                      margin="normal"
                       value={values.materials[k].amount}
                       helperText={
                         errors.materials &&
@@ -248,7 +228,6 @@ const AddProfItemForm = ({ entry, formId, onSubmit, dropItems, ...props }) => {
         professionName: (entry && entry.professionName) || "",
         professionRank: (entry && entry.professionRank) || "",
         materials: (entry && entry.materials) || [{ name: "", amount: 0 }],
-        ...entry,
       }}
       validationSchema={Yup.object().shape({
         name: Yup.string().required(),
