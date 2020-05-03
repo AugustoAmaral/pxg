@@ -1,6 +1,5 @@
 import DropableItem from "@material-ui/icons/Pets";
 import CreateIcon from "@material-ui/icons/Create";
-import SignOutIcon from "@material-ui/icons/ExitToApp";
 
 export default () => {
   return [
@@ -8,14 +7,14 @@ export default () => {
       title: "Itens dropaveis",
       disabled: false,
       canList: true,
-      path: "/drop-itens",
+      path: "/",
       icon: DropableItem,
     },
     {
       title: "Itens de profissão",
       disabled: false,
       canList: true,
-      path: "/",
+      path: "/profession",
       icon: CreateIcon,
     },
   ];

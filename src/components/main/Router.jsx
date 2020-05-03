@@ -22,7 +22,8 @@ const Routes = () => {
             title: "Itens de drop",
             buttons: LoginButton,
           }}
-          path="/drop-itens"
+          exact
+          path="/"
           component={DropItens}
         />
         <MainRoute
@@ -30,7 +31,8 @@ const Routes = () => {
             title: "Itens de profissão",
             buttons: LoginButton,
           }}
-          path="/"
+          exact
+          path="/profession"
           component={ProfessionItens}
         />
         <Route component={() => <Redirect to="/" />} />
