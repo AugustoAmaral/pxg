@@ -9,7 +9,7 @@ export function defaultHeaders() {
   if (user.loggedIn) {
     return {
       "X-Parse-Application-Id": parseConfig.appId,
-      "X-Parse-Session-Token": user.parseToken,
+      "X-Parse-Session-Token": user.token,
       "X-Parse-Rest-Api-Key": parseConfig.restApiKey,
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -18,13 +18,11 @@ export function defaultHeaders() {
     return {
       "X-Parse-Application-Id": parseConfig.appId,
       "X-Parse-Rest-Api-Key": parseConfig.restApiKey,
-      "Content-Type": "application/json",
-      Accept: "application/json",
     };
   }
 }
 export function generateParseURL(url) {
-  return parseConfig.appUrl + "/" + url;
+  return parseConfig.appUrl + url;
 }
 export function generateParseFunctionURL(url) {
   return parseConfig.appUrl + "/functions/" + url;

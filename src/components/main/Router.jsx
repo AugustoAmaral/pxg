@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Main from "./Main";
 import DropItens from "../pages/dropItens/DropItens";
 import ProfessionItens from "../pages/professionItens/ProfessionItens";
+import LoginButton from "../common/login/LoginButon";
 
 const MainRoute = ({ component, innerProps, ...props }) => (
   <Route
@@ -12,13 +13,14 @@ const MainRoute = ({ component, innerProps, ...props }) => (
     )}
   />
 );
-const Routes = ({ user }) => {
+const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
         <MainRoute
           innerProps={{
             title: "Itens de drop",
+            buttons: LoginButton,
           }}
           path="/drop-itens"
           component={DropItens}
@@ -26,6 +28,7 @@ const Routes = ({ user }) => {
         <MainRoute
           innerProps={{
             title: "Itens de profissão",
+            buttons: LoginButton,
           }}
           path="/"
           component={ProfessionItens}
