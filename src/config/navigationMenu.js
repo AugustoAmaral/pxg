@@ -18,20 +18,5 @@ export default () => {
       path: "/",
       icon: CreateIcon,
     },
-    {
-      canList: true,
-      divider: true,
-    },
-    {
-      canList: true,
-      type: "Opções",
-    },
-    {
-      title: "Sair",
-      disabled: false,
-      canList: true,
-      icon: SignOutIcon,
-      customOnClick: () => alert("Sign out"),
-    },
   ];
 };
