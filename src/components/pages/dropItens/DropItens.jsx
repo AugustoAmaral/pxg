@@ -48,8 +48,6 @@ const DropItens = () => {
     handleCloseForm();
   };
 
-  console.log(selectedEntry);
-
   return (
     <>
       {user.loggedIn && <AddFab onClick={handleOpenForm} />}

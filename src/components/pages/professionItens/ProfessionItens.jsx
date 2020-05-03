@@ -50,8 +50,6 @@ const ProfessionItens = () => {
     handleCloseForm();
   };
 
-  console.log(dropItems);
-
   return (
     <>
       {user.loggedIn && <AddFab onClick={handleOpenForm} />}
