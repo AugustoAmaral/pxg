@@ -41,7 +41,7 @@ export const hydrateDropItem = () => ({
   meta: {
     offline: {
       effect: {
-        url: generateClassURL("Item"),
+        url: generateClassURL("Item", { limit: 1000 }),
         method: "GET",
         headers: defaultHeaders(),
       },

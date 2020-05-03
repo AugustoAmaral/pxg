@@ -41,7 +41,7 @@ export const hydrateProfItem = () => ({
   meta: {
     offline: {
       effect: {
-        url: generateClassURL("ProfessionItem"),
+        url: generateClassURL("ProfessionItem", { limit: 1000 }),
         method: "GET",
         headers: defaultHeaders(),
       },
