@@ -4,7 +4,7 @@ import {
   cleanAndReload,
   loadLocalUser,
   cleanLocalUser,
-} from "../lib/localStorageFunctions";
+} from "../../lib/localStorageFunctions";
 
 function User() {
   this.loggedIn = false;
