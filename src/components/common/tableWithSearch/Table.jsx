@@ -6,6 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   table: {
@@ -13,17 +14,10 @@ const useStyles = makeStyles({
   },
 });
 
-const formatMaterial = (materials) => {
-  let row = "";
-  materials.forEach((material, i) => {
-    if (i === 0) {
-      row = `nome: ${material.name} - quantidade: ${material.amount}`;
-    } else {
-      row = `${row}, nome: ${material.name} - quantidade: ${material.amount}`;
-    }
-  });
-  return row;
-};
+const formatMaterial = (materials) =>
+  materials.map(
+    (material) => `Nome: ${material.name} - Quantidade: ${material.amount}`
+  );
 
 const CustomTable = ({ onClick, rows, columns }) => {
   const classes = useStyles();
@@ -33,7 +27,12 @@ const CustomTable = ({ onClick, rows, columns }) => {
         <TableHead>
           <TableRow>
             {columns.map((column, i) => (
-              <TableCell key={"column" + i} align={i === 0 ? "left" : "right"}>
+              <TableCell
+                key={"column" + i}
+                align={
+                  i === 0 || column.name === "materials" ? "left" : "right"
+                }
+              >
                 {column.label}
               </TableCell>
             ))}
@@ -55,13 +54,15 @@ const CustomTable = ({ onClick, rows, columns }) => {
                   );
                 else if (column.name === "materials")
                   return (
-                    <TableCell key={"rc" + row[column.name]} align="right">
-                      {formatMaterial(row[column.name])}
+                    <TableCell key={"rc" + row[column.name]} align="left">
+                      {formatMaterial(row[column.name]).map((materialRow) => (
+                        <Typography key={materialRow}>{materialRow}</Typography>
+                      ))}
                     </TableCell>
                   );
                 else
                   return (
-                    <TableCell key={"rc" + row[column.name]} align="right">
+                    <TableCell key={"rc" + row[column.name]} align="center">
                       {row[column.name]}
                     </TableCell>
                   );
