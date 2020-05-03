@@ -22,5 +22,9 @@ export const readDropItemTable = createSelector(
 export const readDropsForMenu = createSelector(
   (state) => state.dropItem.entries,
   (entries) =>
-    entries.map((entry) => ({ value: entry.name, label: entry.name }))
+    orderBy(
+      entries.map((entry) => ({ value: entry.name, label: entry.name })),
+      "label",
+      "asc"
+    )
 );
