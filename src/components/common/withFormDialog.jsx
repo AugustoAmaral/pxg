@@ -43,7 +43,6 @@ const withFormDialog = (Component) => {
           fullScreen={fullScreen}
           maxWidth={formWidth}
           fullWidth
-          {...props}
         >
           <CommonHeader
             title={title}

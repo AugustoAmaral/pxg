@@ -13,6 +13,18 @@ const useStyles = makeStyles({
   },
 });
 
+const formatMaterial = (materials) => {
+  let row = "";
+  materials.forEach((material, i) => {
+    if (i === 0) {
+      row = `nome: ${material.name} - quantidade: ${material.amount}`;
+    } else {
+      row = `${row}, nome: ${material.name} - quantidade: ${material.amount}`;
+    }
+  });
+  return row;
+};
+
 const CustomTable = ({ onClick, rows, columns }) => {
   const classes = useStyles();
   return (
@@ -39,6 +51,12 @@ const CustomTable = ({ onClick, rows, columns }) => {
                       scope="row"
                     >
                       {row[column.name]}
+                    </TableCell>
+                  );
+                else if (column.name === "materials")
+                  return (
+                    <TableCell key={"rc" + row[column.name]} align="right">
+                      {formatMaterial(row[column.name])}
                     </TableCell>
                   );
                 else

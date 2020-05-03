@@ -12,7 +12,7 @@ const initialState = {
   entries: [],
 };
 
-const kpi = (state = initialState, action) => {
+const dropItem = (state = initialState, action) => {
   switch (action.type) {
     case READ_DROP_ITEM:
       return {
@@ -51,4 +51,4 @@ const kpi = (state = initialState, action) => {
       return state;
   }
 };
-export default kpi;
+export default dropItem;
