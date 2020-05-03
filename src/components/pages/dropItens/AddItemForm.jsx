@@ -79,7 +79,7 @@ const Form = withStyles(styles)(
   }
 );
 
-const OneTimeTaskForm = ({ entry, formId, onSubmit, onDelete }) => {
+const AddItemForm = ({ entry, formId, onSubmit, onDelete }) => {
   return (
     <Formik
       initialValues={{
@@ -106,4 +106,4 @@ const OneTimeTaskForm = ({ entry, formId, onSubmit, onDelete }) => {
   );
 };
 
-export default withFormDialog(OneTimeTaskForm);
+export default withFormDialog(AddItemForm);

@@ -4,6 +4,7 @@ import {
   cleanAndReload,
   loadLocalUser,
   cleanLocalUser,
+  reload,
 } from "../lib/localStorageFunctions";
 
 function User() {
@@ -15,6 +16,7 @@ function User() {
     if (response) storeLocalUser(response);
     this.loggedIn = true;
     this.token = storageUserInfo.token;
+    if (response) reload();
   };
 
   this.login = ({ username, password }) =>
