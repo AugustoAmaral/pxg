@@ -1,11 +1,10 @@
 import React from "react";
-import TopBar from "./TopBar";
+import Router from "./Router";
 
 function App() {
   return (
     <>
-      <TopBar />
-      <div>First Commit</div>
+      <Router />
     </>
   );
 }
